@@ -71,26 +71,18 @@ void oledkit_render_info_user(void) {
 #endif
 
 #ifdef COMBO_ENABLE
+
+// 1. 同時押しのキーの組み合わせを先にすべて定義する
 const uint16_t PROGMEM my_qw[] = {KC_Q, KC_W, COMBO_END};
-
-combo_t key_combos[] = {
-COMBO(my_qw, KC_ESC),
-};
-#endif
-
-#ifdef COMBO_ENABLE
 const uint16_t PROGMEM my_jk[] = {KC_J, KC_K, COMBO_END};
-
-combo_t key_combos[] = {
-COMBO(my_jk, KC_MS_BTN1),
-};
-#endif
-
-#ifdef COMBO_ENABLE
 const uint16_t PROGMEM my_kl[] = {KC_K, KC_L, COMBO_END};
 
+// 2. それらを1つの key_combos 配列の中にまとめる
 combo_t key_combos[] = {
-COMBO(my_kl, KC_MS_BTN2),
+    COMBO(my_qw, KC_ESC),
+    COMBO(my_jk, KC_MS_BTN1),
+    COMBO(my_kl, KC_MS_BTN2)
 };
+
 #endif
 
